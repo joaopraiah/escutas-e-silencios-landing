@@ -8,21 +8,47 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
   /* ---------- 1. Entrada cinematográfica ---------- */
+  // letras do nome surgem uma a uma
+  $$('[data-letters]').forEach(el => {
+    const text = el.textContent; el.textContent = '';
+    [...text].forEach((ch, i) => {
+      const span = document.createElement('span');
+      span.className = 'ch' + (ch === '&' ? ' amp' : '');
+      span.style.setProperty('--i', i);
+      span.textContent = ch === ' ' ? ' ' : ch;
+      el.appendChild(span);
+    });
+  });
   const start = () => {
     body.classList.add('is-loaded');
-    setTimeout(() => body.classList.add('is-ready'), reduceMotion ? 0 : 650);
-    setTimeout(() => { const intro = $('.intro'); intro && intro.remove(); }, 2400);
+    setTimeout(() => body.classList.add('is-ready'), reduceMotion ? 0 : 900);
+    setTimeout(() => { const intro = $('.intro'); intro && intro.remove(); }, 3000);
   };
   if (reduceMotion) {
     body.classList.add('is-loaded', 'is-ready');
   } else {
-    const minIntro = new Promise(r => setTimeout(r, 1500));
-    const heroImg = $('.hero__photo img');
-    const imgReady = heroImg && !heroImg.complete
-      ? new Promise(r => { heroImg.addEventListener('load', r, { once: true }); heroImg.addEventListener('error', r, { once: true }); })
-      : Promise.resolve();
-    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
-    Promise.race([Promise.all([minIntro, imgReady, fontsReady]), new Promise(r => setTimeout(r, 3500))]).then(start);
+    // contador acompanha o carregamento real (imagens do topo + fontes), com duração mínima
+    const countEl = $('[data-count]');
+    const barEl = $('[data-bar]');
+    const tasks = [...$$('.hero img, .header img')].filter(i => !i.complete)
+      .map(img => new Promise(r => { img.addEventListener('load', r, { once: true }); img.addEventListener('error', r, { once: true }); }));
+    if (document.fonts) tasks.push(document.fonts.ready);
+    let done = 0; const total = Math.max(tasks.length, 1);
+    tasks.forEach(t => t.then(() => done++));
+    const t0 = performance.now(); const minT = 2300, maxT = 5000;
+    let shown = 0;
+    const tick = (now) => {
+      const el = now - t0;
+      const real = tasks.length ? done / total : 1;
+      const target = Math.min(real, el / minT) * 100;
+      shown += (target - shown) * 0.12;
+      if (target === 100 && shown > 99.4) shown = 100;
+      countEl.textContent = Math.round(shown);
+      barEl.style.transform = `scaleX(${shown / 100})`;
+      if (shown >= 100 || el > maxT) { countEl.textContent = 100; barEl.style.transform = 'scaleX(1)'; setTimeout(start, 250); return; }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   }
 
   /* ---------- 2. Reveal na rolagem ---------- */
@@ -35,7 +61,6 @@
 
   // stagger dos cards de identificação
   $$('.cards .card').forEach((c, i) => c.style.setProperty('--delay', `${(i % 3) * 0.12 + Math.floor(i / 3) * 0.05}s`));
-  $$('.steps .step').forEach((s, i) => s.style.setProperty('--delay', `${i * 0.08}s`));
 
   /* ---------- 3. Header: estado ao rolar + esconder ao descer ---------- */
   const header = $('.header');
@@ -71,10 +96,35 @@
     words = $$('.w', wordsEl);
   }
 
-  /* ---------- 6. Timeline "Como funciona" ---------- */
-  const steps = $('[data-steps]');
-  const stepFill = steps && $('.steps__fill', steps);
-  const stepItems = steps ? $$('.step', steps) : [];
+  /* ---------- 6. Passo a passo guiado pela rolagem ---------- */
+  const proc = $('[data-process]');
+  const procImgs = proc ? $$('.pimg', proc) : [];
+  const procSteps = proc ? $$('.pstep', proc) : [];
+  const procBars = proc ? $$('.processo__bars button', proc) : [];
+  const procDigit = proc && $('[data-digit]', proc);
+  let procActive = -1;
+  const setProc = (idx) => {
+    if (idx === procActive) return;
+    procActive = idx;
+    const apply = (els) => els.forEach((el, i) => {
+      el.classList.toggle('is-active', i === idx);
+      el.classList.toggle('is-before', i < idx);
+    });
+    apply(procImgs); apply(procSteps);
+    procBars.forEach((b, i) => b.setAttribute('aria-selected', String(i === idx)));
+    procDigit.style.setProperty('--active', idx);
+  };
+  if (proc) {
+    setProc(0);
+    procBars.forEach((b, i) => b.addEventListener('click', () => {
+      const dist = proc.offsetHeight - window.innerHeight;
+      window.scrollTo({ top: proc.offsetTop + dist * ((i + 0.15) / procBars.length), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }));
+  }
+
+  /* ---------- Cards empilhados no mobile ---------- */
+  const stackCards = $$('.cards .card');
+  const mqMobile = window.matchMedia('(max-width: 899px)');
 
   /* ---------- 7. Parallax ---------- */
   const parallax = $$('[data-parallax]');
@@ -97,11 +147,27 @@
       words.forEach((w, i) => w.classList.toggle('is-on', i < lit));
     }
 
-    if (steps) {
-      const r = steps.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (vh * 0.6 - r.top) / r.height));
-      stepFill.style.setProperty('--p', p.toFixed(3));
-      stepItems.forEach(s => s.classList.toggle('is-active', s.getBoundingClientRect().top < vh * 0.6));
+    if (proc) {
+      const r = proc.getBoundingClientRect();
+      const dist = r.height - vh;
+      const p = Math.min(0.9999, Math.max(0, -r.top / dist));
+      const n = procSteps.length;
+      const idx = Math.floor(p * n);
+      setProc(idx);
+      procBars.forEach((b, i) => b.querySelector('span').style.setProperty('--fill', Math.min(1, Math.max(0, p * n - i)).toFixed(3)));
+    }
+
+    if (mqMobile.matches && !reduceMotion) {
+      stackCards.forEach((card, i) => {
+        const next = stackCards[i + 1];
+        const inner = card.firstElementChild;
+        if (!next) { inner.style.transform = ''; inner.style.filter = ''; return; }
+        const r = card.getBoundingClientRect();
+        const nr = next.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, (r.bottom - nr.top) / r.height));
+        inner.style.transform = p ? `scale(${(1 - p * 0.07).toFixed(4)})` : '';
+        inner.style.filter = p ? `brightness(${(1 - p * 0.3).toFixed(3)})` : '';
+      });
     }
 
     if (!reduceMotion) {

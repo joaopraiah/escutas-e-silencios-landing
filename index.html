@@ -253,11 +253,30 @@
           <li class="card reveal" data-tilt style="--i:0">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--rel" viewBox="0 0 200 120">
-                  <path class="rel-thread" d="M40 92 Q100 120 160 92"/>
-                  <circle class="rel-a" cx="82" cy="58" r="30"/>
-                  <circle class="rel-b" cx="118" cy="58" r="30"/>
-                  <circle class="rel-dot" cx="100" cy="58" r="3"/>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--rel" viewBox="0 0 200 120">
+                  <g class="person rel-a">
+                    <path class="hair" d="M56 72c-4-17 3-29 14-29s18 12 14 29c-2-10-7-15-14-16-7 1-12 6-14 16Z"/>
+                    <path class="body" d="M46 122c0-30 9-50 24-50s24 20 24 50"/>
+                    <circle class="head" cx="70" cy="60" r="13"/>
+                    <path class="hair" d="M57 57c1-9 6-14 13-14s12 5 13 13c-6-1-10-4-13-8-2 5-7 8-13 9Z"/>
+                    <circle class="f" cx="65.5" cy="61" r="1.4"/><circle class="f" cx="74.5" cy="61" r="1.4"/>
+                    <path class="mood-a" d="M66 68.5q4-2.8 8 0"/>
+                    <path class="mood-b" d="M65.5 67q4.5 3.8 9 0"/>
+                    <circle class="blush mood-b" cx="62.5" cy="65.5" r="2"/><circle class="blush mood-b" cx="77.5" cy="65.5" r="2"/>
+                  </g>
+                  <g class="person rel-b">
+                    <path class="body" d="M106 122c0-30 9-50 24-50s24 20 24 50"/>
+                    <circle class="head" cx="130" cy="60" r="13"/>
+                    <path class="hair" d="M117 58c0-10 6-16 13-16s13 6 13 16c-4-4-8-6-13-6s-9 2-13 6Z"/>
+                    <circle class="f" cx="125.5" cy="61" r="1.4"/><circle class="f" cx="134.5" cy="61" r="1.4"/>
+                    <path class="mood-a" d="M126 68h8"/>
+                    <path class="mood-b" d="M125.5 67q4.5 3.8 9 0"/>
+                    <circle class="blush mood-b" cx="122.5" cy="65.5" r="2"/><circle class="blush mood-b" cx="137.5" cy="65.5" r="2"/>
+                  </g>
+                  <g class="rel-heart">
+                    <path class="g hl" d="M100 30c-2-5-10-5-10 1 0 5 5 8 10 12"/>
+                    <path class="g hr" d="M100 30c2-5 10-5 10 1 0 5-5 8-10 12"/>
+                  </g>
                 </svg>
                 <span class="card__num">01</span>
               </div>
@@ -270,10 +289,19 @@
           <li class="card reveal" data-tilt style="--i:1">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--ang" viewBox="0 0 200 120">
-                  <path class="ang-ghost" d="M24 70 C44 20 70 110 92 58 S128 18 112 66 S78 96 108 48 S150 86 176 52"/>
-                  <path class="ang-line" pathLength="100" d="M24 70 C44 20 70 110 92 58 S128 18 112 66 S78 96 108 48 S150 86 176 52"/>
-                  <circle class="ang-dot" cx="176" cy="52" r="3"/>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--ang" viewBox="0 0 200 120">
+                  <path class="g ang-ghost" d="M70 30c6-14 18 4 10 8s-14-14 2-14 12 16 4 14-6-14 8-14 10 12 2 12-8-10 6-10 8 10 0 10-6-8 6-6 6 10 0 10"/>
+                  <path class="g ang-line" pathLength="100" d="M70 30c6-14 18 4 10 8s-14-14 2-14 12 16 4 14-6-14 8-14 10 12 2 12-8-10 6-10 8 10 0 10-6-8 6-6 6 10 0 10"/>
+                  <g class="person ang-p">
+                    <path class="hair" d="M85 76c-3-15 4-27 15-27s18 12 15 27c-2-9-7-14-15-15-8 1-13 6-15 15Z"/>
+                    <path class="body" d="M75 122c0-26 10-44 25-44s25 18 25 44"/>
+                    <circle class="head" cx="100" cy="66" r="13"/>
+                    <path class="hair" d="M87 63c1-9 6-14 13-14s12 5 13 14c-5-3-9-6-13-9-4 3-8 6-13 9Z"/>
+                    <path class="brow" d="M92 59.5l5-1.8M108 59.5l-5-1.8"/>
+                    <circle class="f" cx="95.5" cy="64" r="1.4"/><circle class="f" cx="104.5" cy="64" r="1.4"/>
+                    <path class="mood-a" d="M94.5 72q1.4-1.6 2.8 0t2.8 0 2.8 0 2.8 0"/>
+                    <path class="mood-b" d="M96 71.5q4 2.6 8 0"/>
+                  </g>
                 </svg>
                 <span class="card__num">02</span>
               </div>
@@ -286,14 +314,32 @@
           <li class="card reveal" data-tilt style="--i:2">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--anx" viewBox="0 0 200 120">
-                  <circle class="anx-pulse" cx="100" cy="60" r="34"/>
-                  <circle class="anx-pulse anx-pulse--2" cx="100" cy="60" r="34"/>
-                  <circle class="anx-face" cx="100" cy="60" r="34"/>
-                  <g class="anx-ticks"><path d="M100 30v5M100 85v5M70 60h5M125 60h5"/></g>
-                  <path class="anx-hour" d="M100 60V44"/>
-                  <path class="anx-min" d="M100 60h20"/>
-                  <circle cx="100" cy="60" r="2.5" class="anx-center"/>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--anx" viewBox="0 0 200 120">
+                  <g class="anx-clock">
+                    <circle class="anx-pulse" cx="152" cy="40" r="14"/>
+                    <circle class="g" cx="152" cy="40" r="14"/>
+                    <path class="g anx-min" d="M152 40h9"/>
+                    <path class="g anx-hour" d="M152 40v-6"/>
+                  </g>
+                  <g class="person anx-p">
+                    <path class="body" d="M68 122c0-28 9-48 24-48s24 20 24 48"/>
+                    <circle class="head" cx="92" cy="62" r="13"/>
+                    <path class="hair" d="M79 60c0-11 6-17 13-17s13 6 13 17l-3-6-3 4-3-6-4 5-3-6-3 6-4-4Z"/>
+                    <g class="mood-a">
+                      <path d="M84 53.5q3-2.4 6 0M94 53.5q3-2.4 6 0"/>
+                      <circle cx="87.5" cy="59.5" r="2.6"/><circle cx="96.5" cy="59.5" r="2.6"/>
+                      <circle class="f" cx="87.5" cy="59.8" r="1"/><circle class="f" cx="96.5" cy="59.8" r="1"/>
+                      <circle cx="92" cy="69" r="2.2"/>
+                      <path class="anx-shake" d="M74 54q-3 4 0 8M110 54q3 4 0 8"/>
+                    </g>
+                    <g class="mood-b">
+                      <path d="M85 56h5M94 56h5"/>
+                      <path d="M85.5 60q2 1.8 4 0M94.5 60q2 1.8 4 0"/>
+                      <path d="M88 67q4 3 8 0"/>
+                      <circle class="blush" cx="83.5" cy="65" r="2"/><circle class="blush" cx="100.5" cy="65" r="2"/>
+                    </g>
+                  </g>
+                  <path class="drop anx-drop" d="M108 46c2 3 3 5 3 6.5a3 3 0 0 1-6 0c0-1.5 1-3.5 3-6.5Z"/>
                 </svg>
                 <span class="card__num">03</span>
               </div>
@@ -306,10 +352,28 @@
           <li class="card reveal" data-tilt style="--i:3">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--dep" viewBox="0 0 200 120">
-                  <g class="dep-sun"><circle cx="122" cy="40" r="14"/><path d="M122 18v-6M140 26l4-4M146 40h6M104 26l-4-4"/></g>
-                  <path class="dep-cloud" d="M70 66a16 16 0 0 1 2-32 22 22 0 0 1 42-4 15 15 0 0 1 16 15 12 12 0 0 1-2 21Z"/>
-                  <g class="dep-rain"><path d="M78 76v10"/><path d="M92 80v10"/><path d="M106 76v10"/><path d="M120 80v10"/></g>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--dep" viewBox="0 0 200 120">
+                  <g class="dep-sun"><circle class="g" cx="132" cy="22" r="9"/><path class="g" d="M132 7V3M144 12l3-3M147 22h4M120 12l-3-3"/></g>
+                  <g class="dep-cloud">
+                    <path class="cloud" d="M84 40a10 10 0 0 1 1-20 14 14 0 0 1 27-3 10 10 0 0 1 10 10 8 8 0 0 1-1 13Z"/>
+                    <g class="dep-rain"><path d="M90 46v7"/><path d="M100 48v7"/><path d="M110 46v7"/></g>
+                  </g>
+                  <g class="person dep-p">
+                    <path class="body dep-body" d="M74 122c0-22 11-36 26-36s26 14 26 36"/>
+                    <g class="dep-head">
+                      <circle class="head" cx="100" cy="74" r="13"/>
+                      <path class="hair" d="M87 72c0-10 6-16 13-16s13 6 13 16c-3-3-6-5-9-5-2 2-6 3-10 2-3 0-5 1-7 3Z"/>
+                      <g class="mood-a">
+                        <path d="M93 72q2.2-2 4.4 0M102.6 72q2.2-2 4.4 0"/>
+                        <path d="M96 81q4-2.6 8 0"/>
+                      </g>
+                      <g class="mood-b">
+                        <path d="M93 71q2.2 2 4.4 0M102.6 71q2.2 2 4.4 0"/>
+                        <path d="M95.5 79q4.5 3.8 9 0"/>
+                        <circle class="blush" cx="92" cy="77" r="2"/><circle class="blush" cx="108" cy="77" r="2"/>
+                      </g>
+                    </g>
+                  </g>
                 </svg>
                 <span class="card__num">04</span>
               </div>
@@ -322,10 +386,29 @@
           <li class="card reveal" data-tilt style="--i:4">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--afe" viewBox="0 0 200 120">
-                  <path class="afe-inf" d="M100 60 C 80 30, 50 30, 50 60 C 50 90, 80 90, 100 60 C 120 30, 150 30, 150 60 C 150 90, 120 90, 100 60 Z"/>
-                  <circle class="afe-dot" r="4"/>
-                  <circle class="afe-dot afe-dot--2" r="2.5"/>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--afe" viewBox="0 0 200 120">
+                  <g class="afe-hearts">
+                    <path class="g heart h1" d="M100 60c-1-3-6-3-6 1 0 3 3 5 6 7 3-2 6-4 6-7 0-4-5-4-6-1Z"/>
+                    <path class="g heart h2" d="M100 60c-1-3-6-3-6 1 0 3 3 5 6 7 3-2 6-4 6-7 0-4-5-4-6-1Z"/>
+                    <path class="g heart h3" d="M100 60c-1-3-6-3-6 1 0 3 3 5 6 7 3-2 6-4 6-7 0-4-5-4-6-1Z"/>
+                  </g>
+                  <g class="person afe-a">
+                    <path class="hair" d="M66 76c-4-17 3-29 14-29s18 12 14 29c-2-10-7-15-14-16-7 1-12 6-14 16Z"/>
+                    <path class="body" d="M57 122c0-28 9-46 23-46s23 18 23 46"/>
+                    <circle class="head" cx="80" cy="64" r="13"/>
+                    <path class="hair" d="M67 61c1-9 6-14 13-14s12 5 13 13c-6-1-10-4-13-8-2 5-7 8-13 9Z"/>
+                    <path d="M74 64q2 1.8 4 0M82 64q2 1.8 4 0"/>
+                    <path d="M75.5 70q4.5 3.8 9 0"/>
+                    <circle class="blush" cx="72.5" cy="68.5" r="2"/><circle class="blush" cx="87.5" cy="68.5" r="2"/>
+                  </g>
+                  <g class="person afe-b">
+                    <path class="body" d="M97 122c0-28 9-46 23-46s23 18 23 46"/>
+                    <circle class="head" cx="120" cy="64" r="13"/>
+                    <path class="hair" d="M107 62c0-10 6-16 13-16s13 6 13 16c-4-4-8-6-13-6s-9 2-13 6Z"/>
+                    <path d="M114 64q2 1.8 4 0M122 64q2 1.8 4 0"/>
+                    <path d="M115.5 70q4.5 3.8 9 0"/>
+                    <circle class="blush" cx="112.5" cy="68.5" r="2"/><circle class="blush" cx="127.5" cy="68.5" r="2"/>
+                  </g>
                 </svg>
                 <span class="card__num">05</span>
               </div>
@@ -338,12 +421,26 @@
           <li class="card reveal" data-tilt style="--i:5">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--mat" viewBox="0 0 200 120">
-                  <g class="mat-glass">
-                    <path class="mat-frame" d="M80 22h40M80 98h40M84 22c0 22 14 28 14 38s-14 16-14 38M116 22c0 22-14 28-14 38s14 16 14 38"/>
-                    <path class="mat-top" d="M87 30h26c-2 12-10 20-13 26-3-6-11-14-13-26Z"/>
-                    <path class="mat-bottom" d="M100 72c-4 6-12 12-13 22h26c-1-10-9-16-13-22Z"/>
-                    <path class="mat-stream" d="M100 58v30"/>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--mat" viewBox="0 0 200 120">
+                  <g class="mat-plant">
+                    <path class="mat-pot" d="M141 116h20l-3-12h-14Z"/>
+                    <path class="g mat-stem" pathLength="100" d="M151 104V70"/>
+                    <path class="g mat-leaf l1" d="M151 92c-8-1-12-7-12-13 7 1 12 6 12 13Z"/>
+                    <path class="g mat-leaf l2" d="M151 82c8-1 12-7 12-13-7 1-12 6-12 13Z"/>
+                    <path class="g mat-leaf l3" d="M151 72c-6-1-9-5-9-10 5 1 9 4 9 10Z"/>
+                  </g>
+                  <g class="person mat-p">
+                    <circle class="hair" cx="80" cy="38" r="6"/>
+                    <path class="body" d="M55 122c0-30 10-52 25-52s25 22 25 52"/>
+                    <circle class="head" cx="80" cy="58" r="13"/>
+                    <path class="hair" d="M67 57c0-10 6-15 13-15s13 5 13 15c-3-5-8-8-13-8s-10 3-13 8Z"/>
+                    <circle class="g" cx="75.4" cy="59" r="3.4"/><circle class="g" cx="84.6" cy="59" r="3.4"/><path class="g" d="M78.8 59h2.4"/>
+                    <circle class="f" cx="75.4" cy="59.4" r="1.1"/><circle class="f" cx="84.6" cy="59.4" r="1.1"/>
+                    <path d="M76 66q4 3 8 0"/>
+                    <circle class="blush" cx="71" cy="64.5" r="2"/><circle class="blush" cx="89" cy="64.5" r="2"/>
+                    <path class="book" d="M62 98l18-3v16l-18 3Z"/>
+                    <path class="book" d="M80 95l18 3v16l-18-3Z"/>
+                    <path class="book mat-page" d="M80 95l18 3v16l-18-3Z"/>
                   </g>
                 </svg>
                 <span class="card__num">06</span>
@@ -357,10 +454,28 @@
           <li class="card reveal" data-tilt style="--i:6">
             <div class="card__inner">
               <div class="card__stage" aria-hidden="true">
-                <svg class="ill ill--hos" viewBox="0 0 200 120">
-                  <path class="hos-base" d="M16 62h44l8-14 10 34 12-48 10 40 6-12h78"/>
-                  <path class="hos-line" pathLength="100" d="M16 62h44l8-14 10 34 12-48 10 40 6-12h78"/>
-                  <g class="hos-cross"><circle cx="160" cy="34" r="12"/><path d="M160 28v12M154 34h12"/></g>
+                <svg preserveAspectRatio="xMidYMax meet" class="ill ill--hos" viewBox="0 0 200 120">
+                  <path class="g hos-base" d="M14 22h40l6-10 8 22 9-28 8 24 5-8h96"/>
+                  <path class="g hos-line" pathLength="100" d="M14 22h40l6-10 8 22 9-28 8 24 5-8h96"/>
+                  <g class="hos-bed">
+                    <path d="M112 116V78M190 116v-20M112 100h78"/>
+                    <path class="pillow" d="M115 92q0-8 9-8h8q5 0 5 8v6h-22Z"/>
+                    <circle class="head" cx="127" cy="86" r="9"/>
+                    <path d="M122.5 86q1.6 1.4 3.2 0M128.5 86q1.6 1.4 3.2 0"/>
+                    <path d="M124.5 90.5q2.5 2 5 0"/>
+                    <path class="blanket" d="M134 94c12-7 34-7 54 0v6h-54Z"/>
+                  </g>
+                  <g class="person hos-v">
+                    <path class="hair" d="M57 72c-4-17 3-29 14-29s18 12 14 29c-2-10-7-15-14-16-7 1-12 6-14 16Z"/>
+                    <path class="body" d="M47 122c0-30 9-50 24-50s24 20 24 50"/>
+                    <circle class="head" cx="71" cy="60" r="13"/>
+                    <path class="hair" d="M58 57c1-9 6-14 13-14s12 5 13 13c-6-1-10-4-13-8-2 5-7 8-13 9Z"/>
+                    <path d="M65 56.5l4 .6M77 56.5l-4 .6"/>
+                    <circle class="f" cx="67" cy="61" r="1.4"/><circle class="f" cx="76" cy="61" r="1.4"/>
+                    <path d="M67.5 67q4 3 8 0"/>
+                    <path class="arm" d="M88 98c10 1 20 0 32-4"/>
+                  </g>
+                  <path class="g hos-heart" d="M106 78c-1-3-6-3-6 1 0 3 3 5 6 7 3-2 6-4 6-7 0-4-5-4-6-1Z"/>
                 </svg>
                 <span class="card__num">07</span>
               </div>
